@@ -1,6 +1,10 @@
 # React Package Template
 
-A template for creating React packages.
+A package to help you set the document title dynamically.
+
+## License
+
+Licensed under MIT. Totally free for private or commercial projects.
 
 ## Getting Started
 
@@ -8,6 +12,137 @@ To install this package use npm:
 
 ```bash
 npm install @your-scope/react-package-template
+```
+
+## Usage
+
+### Wrap Your React App
+
+Wrap your React app in the `DocumentTitleProvider`:
+
+```tsx
+// index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { DocumentTitleProvider } from '@your-scope/react-package-template';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+    <DocumentTitleProvider>
+        <App />
+    </DocumentTitleProvider>,
+    document.getElementById('root')
+);
+```
+
+### Use the Hook
+
+Use the `useDocumentTitle` hook to set the document title:
+
+```tsx
+// App.tsx
+import React from 'react';
+import { useDocumentTitle } from '@your-scope/react-package-template';
+
+export interface AppProps {}
+
+function App() {
+    useDocumentTitle('Home');
+
+    return <div>Hello, world!</div>;
+}
+
+export default App;
+```
+
+### Use the Component
+
+Alternatively, use the `DocumentTitle` component:
+
+```tsx
+// App.tsx
+import React from 'react';
+import { DocumentTitle } from '@your-scope/react-package-template';
+
+export interface AppProps {}
+
+function App() {
+    return <DocumentTitle title="Home">Hello, world!</DocumentTitle>;
+}
+
+export default App;
+```
+
+### Advanced Example
+
+This example demonstrates how to update the document title based on the loading state and fetched data. This is useful for scenarios where the content of the page depends on data that is being fetched asynchronously:
+
+```tsx
+// App.tsx
+import React, { useEffect, useState } from 'react';
+import { useDocumentTitle } from '@your-scope/react-package-template';
+
+function App() {
+    const [user, setUser] = useState<{ name: string } | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useDocumentTitle(loading ? 'Loading...' : user ? user.name : 'User');
+
+    useEffect(() => {
+        // Simulate a data fetch
+        setTimeout(() => {
+            setUser({ name: 'John Doe' });
+            setLoading(false);
+        }, 2000);
+    }, []);
+
+    return <div>{loading ? 'Loading...' : user ? `Hello, ${user.name}` : 'User not found'}</div>;
+}
+
+export default App;
+```
+
+### Suffix Example
+
+This example demonstrates how to use the `setSuffix` and `clearSuffix` methods to add and remove notification text from the document title dynamically:
+
+```tsx
+// App.tsx
+import React, { useEffect, useState } from 'react';
+import { useDocumentTitle } from '@your-scope/react-package-template';
+
+function App() {
+    const { setSuffix, clearSuffix } = useDocumentTitle('Messenger');
+    const [newMessages, setNewMessages] = useState(0);
+
+    useEffect(() => {
+        // Simulate receiving new messages
+        const timer = setInterval(() => {
+            setNewMessages(prev => prev + 1);
+        }, 5000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    useEffect(() => {
+        if (newMessages > 0) {
+            setNotificationText(`${newMessages} new message${newMessages > 1 ? 's' : ''}`);
+        } else {
+            clearNotificationText();
+        }
+    }, [newMessages, setNotificationText, clearNotificationText]);
+
+    return (
+        <div>
+            {newMessages > 0
+                ? `You have ${newMessages} new message${newMessages > 1 ? 's' : ''}`
+                : 'No new messages'}
+        </div>
+    );
+}
+
+export default App;
 ```
 
 ## Local Development
