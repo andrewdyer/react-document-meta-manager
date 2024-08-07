@@ -6,7 +6,7 @@ export interface DocumentTitleProviderProps {
 }
 
 const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children }) => {
-    const [title, setTitle] = React.useState<string>('');
+    const [title, setDocumentTitle] = React.useState<string>('');
     const [text, setText] = React.useState<string>('');
 
     React.useEffect(() => {
@@ -18,7 +18,7 @@ const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children 
     };
 
     return (
-        <DocumentTitleContext.Provider value={{ setTitle, setText, clearText }}>
+        <DocumentTitleContext.Provider value={{ setDocumentTitle, setText, clearText }}>
             {children}
         </DocumentTitleContext.Provider>
     );

@@ -7,10 +7,10 @@ interface UseDocumentTitle {
 }
 
 const useDocumentTitle = (title: string): UseDocumentTitle => {
-    const { setTitle, setText, clearText } = React.useContext(DocumentTitleContext);
+    const { setDocumentTitle, setText, clearText } = React.useContext(DocumentTitleContext);
 
     React.useEffect(() => {
-        setTitle(title);
+        setDocumentTitle(title);
     }, [title]);
 
     return { setText, clearText };

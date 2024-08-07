@@ -10,13 +10,13 @@ interface TestComponentProps {
 }
 
 const TestComponent: React.FC<TestComponentProps> = ({ title, text, clear }) => {
-    const { setTitle, setText, clearText } = React.useContext(DocumentTitleContext);
+    const { setDocumentTitle, setText, clearText } = React.useContext(DocumentTitleContext);
 
     React.useEffect(() => {
-        if (title) setTitle(title);
+        if (title) setDocumentTitle(title);
         if (text) setText(text);
         if (clear) clearText();
-    }, [setTitle, setText, title, text]);
+    }, [setDocumentTitle, setText, title, text]);
 
     return null;
 };
