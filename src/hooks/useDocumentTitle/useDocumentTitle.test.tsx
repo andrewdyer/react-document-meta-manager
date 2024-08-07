@@ -23,4 +23,20 @@ describe('useDocumentTitle', () => {
 
         expect(document.title).toBe('Base Title - Notification');
     });
+
+    test('should clear the text suffix from the document title', () => {
+        const { result } = renderHook(() => useDocumentTitle('Base Title'), { wrapper });
+
+        act(() => {
+            result.current.setText('Notification');
+        });
+
+        expect(document.title).toBe('Base Title - Notification');
+
+        act(() => {
+            result.current.clearText();
+        });
+
+        expect(document.title).toBe('Base Title');
+    });
 });

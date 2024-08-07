@@ -13,8 +13,12 @@ const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children 
         document.title = text ? `${title} - ${text}` : title;
     }, [title, text]);
 
+    const clearText = () => {
+        setText('');
+    };
+
     return (
-        <DocumentTitleContext.Provider value={{ setTitle, setText }}>
+        <DocumentTitleContext.Provider value={{ setTitle, setText, clearText }}>
             {children}
         </DocumentTitleContext.Provider>
     );

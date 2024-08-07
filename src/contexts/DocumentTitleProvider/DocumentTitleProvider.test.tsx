@@ -3,12 +3,19 @@ import { render } from '@testing-library/react';
 import DocumentTitleContext from '../DocumentTitleContext';
 import DocumentTitleProvider from './DocumentTitleProvider';
 
-const TestComponent: React.FC<{ title?: string; text?: string }> = ({ title, text }) => {
-    const { setTitle, setText } = React.useContext(DocumentTitleContext);
+interface TestComponentProps {
+    title?: string;
+    text?: string;
+    clear?: boolean;
+}
+
+const TestComponent: React.FC<TestComponentProps> = ({ title, text, clear }) => {
+    const { setTitle, setText, clearText } = React.useContext(DocumentTitleContext);
 
     React.useEffect(() => {
         if (title) setTitle(title);
         if (text) setText(text);
+        if (clear) clearText();
     }, [setTitle, setText, title, text]);
 
     return null;
@@ -33,5 +40,15 @@ describe('DocumentTitleProvider', () => {
         );
 
         expect(document.title).toBe('Base Title - Notification');
+    });
+
+    test('should clear the text suffix from the document title', () => {
+        render(
+            <DocumentTitleProvider>
+                <TestComponent title="Base Title" text="Notification" clear />
+            </DocumentTitleProvider>
+        );
+
+        expect(document.title).toBe('Base Title');
     });
 });
