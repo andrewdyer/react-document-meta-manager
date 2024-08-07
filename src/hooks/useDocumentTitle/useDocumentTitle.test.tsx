@@ -18,7 +18,7 @@ describe('useDocumentTitle', () => {
         const { result } = renderHook(() => useDocumentTitle('Base Title'), { wrapper });
 
         act(() => {
-            result.current.setText('Notification');
+            result.current.setSuffix('Notification');
         });
 
         expect(document.title).toBe('Base Title - Notification');
@@ -28,13 +28,13 @@ describe('useDocumentTitle', () => {
         const { result } = renderHook(() => useDocumentTitle('Base Title'), { wrapper });
 
         act(() => {
-            result.current.setText('Notification');
+            result.current.setSuffix('Notification');
         });
 
         expect(document.title).toBe('Base Title - Notification');
 
         act(() => {
-            result.current.clearText();
+            result.current.clearSuffix();
         });
 
         expect(document.title).toBe('Base Title');

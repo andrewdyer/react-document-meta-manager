@@ -7,18 +7,19 @@ export interface DocumentTitleProviderProps {
 
 const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children }) => {
     const [title, setDocumentTitle] = React.useState<string>('');
-    const [text, setText] = React.useState<string>('');
+    const [documentTitleSuffix, setDocumentTitleSuffix] = React.useState<string>('');
 
     React.useEffect(() => {
-        document.title = text ? `${title} - ${text}` : title;
-    }, [title, text]);
+        document.title = documentTitleSuffix ? `${title} - ${documentTitleSuffix}` : title;
+    }, [title, documentTitleSuffix]);
 
-    const clearText = () => {
-        setText('');
+    const clearDocumentTitleSuffix = () => {
+        setDocumentTitleSuffix('');
     };
 
     return (
-        <DocumentTitleContext.Provider value={{ setDocumentTitle, setText, clearText }}>
+        <DocumentTitleContext.Provider
+            value={{ setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix }}>
             {children}
         </DocumentTitleContext.Provider>
     );

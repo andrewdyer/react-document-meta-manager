@@ -2,18 +2,19 @@ import React from 'react';
 import { DocumentTitleContext } from '../../contexts';
 
 interface UseDocumentTitle {
-    setText: (text: string) => void;
-    clearText: () => void;
+    setSuffix: (text: string) => void;
+    clearSuffix: () => void;
 }
 
 const useDocumentTitle = (title: string): UseDocumentTitle => {
-    const { setDocumentTitle, setText, clearText } = React.useContext(DocumentTitleContext);
+    const { setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix } =
+        React.useContext(DocumentTitleContext);
 
     React.useEffect(() => {
         setDocumentTitle(title);
     }, [title]);
 
-    return { setText, clearText };
+    return { setSuffix: setDocumentTitleSuffix, clearSuffix: clearDocumentTitleSuffix };
 };
 
 export default useDocumentTitle;
