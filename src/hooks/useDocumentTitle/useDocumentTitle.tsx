@@ -1,12 +1,18 @@
 import React from 'react';
 import { DocumentTitleContext } from '../../contexts';
 
-const useDocumentTitle = (title: string): void => {
-    const { setTitle } = React.useContext(DocumentTitleContext);
+interface UseDocumentTitle {
+    setText: (text: string) => void;
+}
+
+const useDocumentTitle = (title: string): UseDocumentTitle => {
+    const { setTitle, setText } = React.useContext(DocumentTitleContext);
 
     React.useEffect(() => {
         setTitle(title);
     }, [title]);
+
+    return { setText };
 };
 
 export default useDocumentTitle;

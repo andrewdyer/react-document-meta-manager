@@ -7,13 +7,14 @@ export interface DocumentTitleProviderProps {
 
 const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children }) => {
     const [title, setTitle] = React.useState<string>('');
+    const [text, setText] = React.useState<string>('');
 
     React.useEffect(() => {
-        document.title = title;
-    }, [title]);
+        document.title = text ? `${title} - ${text}` : title;
+    }, [title, text]);
 
     return (
-        <DocumentTitleContext.Provider value={{ setTitle }}>
+        <DocumentTitleContext.Provider value={{ setTitle, setText }}>
             {children}
         </DocumentTitleContext.Provider>
     );
