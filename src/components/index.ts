@@ -1,2 +1,2 @@
-export * from './Button';
-export { default as Button } from './Button';
+export * from './DocumentTitle';
+export { default as DocumentTitle } from './DocumentTitle';
