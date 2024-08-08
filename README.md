@@ -1,6 +1,8 @@
-# React Package Template
+# React Document Metadata
 
-A package to help you set the document title dynamically.
+A flexible and dynamic package designed to help you manage document metadata, such as the title and other meta tags, in your React application.
+
+> This package currently focuses on managing the document title, with plans to expand its functionality to other meta tags in the future.
 
 ## License
 
@@ -11,20 +13,20 @@ Licensed under MIT. Totally free for private or commercial projects.
 To install this package use npm:
 
 ```bash
-npm install react-document-meta-manager
+npm install react-document-metadata
 ```
 
 ## Usage
 
 ### Wrap Your React App
 
-Wrap your React app in the `DocumentMetaProvider`:
+To get started, wrap your React app in the `DocumentMetaProvider`. This ensures that the meta tags are managed properly across your entire application:
 
 ```tsx
 // index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { DocumentMetaProvider } from 'react-document-meta-manager';
+import { DocumentMetaProvider } from 'react-document-metadata';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -36,14 +38,14 @@ root.render(
 );
 ```
 
-### Use the Hook
+### Using the useDocumentTitle Hook
 
-Use the `useDocumentTitle` hook to set the document title:
+To set the document title dynamically, use the `useDocumentTitle` hook:
 
 ```tsx
 // App.tsx
 import React from 'react';
-import { useDocumentTitle } from 'react-document-meta-manager';
+import { useDocumentTitle } from 'react-document-metadata';
 
 export interface AppProps {}
 
@@ -56,14 +58,14 @@ function App() {
 export default App;
 ```
 
-### Use the Component
+### Using the DocumentMeta Component
 
-Alternatively, use the `DocumentTitle` component:
+Alternatively, you can use the `DocumentMeta` component to manage the document title:
 
 ```tsx
 // App.tsx
 import React from 'react';
-import { DocumentMeta } from 'react-document-meta-manager';
+import { DocumentMeta } from 'react-document-metadata';
 
 export interface AppProps {}
 
@@ -74,14 +76,16 @@ function App() {
 export default App;
 ```
 
-### Advanced Example
+## Advanced Example: Dynamic Document Titles
 
-This example demonstrates how to update the document title based on the loading state and fetched data. This is useful for scenarios where the content of the page depends on data that is being fetched asynchronously:
+### Dynamic Document Titles
+
+This example demonstrates how to update the document title based on the loading state and fetched data. This approach is ideal when your page content depends on asynchronous data fetching:
 
 ```tsx
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { useDocumentTitle } from 'react-document-meta-manager';
+import { useDocumentTitle } from 'react-document-metadata';
 
 function App() {
     const [user, setUser] = useState<{ name: string } | null>(null);
@@ -103,14 +107,14 @@ function App() {
 export default App;
 ```
 
-### Suffix Example
+### Managing Document Title Suffixes
 
-This example demonstrates how to use the `setDocumentTitleSuffix` and `clearDocumentTitleSuffix` methods to add and remove notification text from the document title dynamically:
+You can easily manage dynamic suffixes in your document titles, such as notification counts, using the `setDocumentTitleSuffix` and `clearDocumentTitleSuffix` methods:
 
 ```tsx
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { useDocumentTitle } from 'react-document-meta-manager';
+import { useDocumentTitle } from 'react-document-metadata';
 
 function App() {
     const { setDocumentTitleSuffix, clearDocumentTitleSuffix } = useDocumentTitle('Messenger');
@@ -162,7 +166,7 @@ npm install yalc -g
 First, navigate to the project directory where you want to use this package and run:
 
 ```bash
-yalc add react-document-meta-manager
+yalc add react-document-metadata
 ```
 
 This will install the package from the local Yalc store. You can now use it in the project as you would with any other npm package.
@@ -172,7 +176,7 @@ This will install the package from the local Yalc store. You can now use it in t
 After publishing changes to this package to the local Yalc store, navigate to the project directory and run:
 
 ```bash
-yalc update react-document-meta-manager
+yalc update react-document-metadata
 ```
 
 This will update the installed version of this package in the project.
