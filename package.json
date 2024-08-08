@@ -1,6 +1,6 @@
 {
-    "name": "react-package-template",
-    "description": "A template for creating React packages",
+    "name": "react-document-metadata",
+    "description": "A flexible and dynamic package designed to help you manage document metadata in your React application",
     "version": "1.0.0",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -22,14 +22,13 @@
     },
     "keywords": [
         "react",
-        "package",
-        "template",
-        "typescript"
+        "document",
+        "meta"
     ],
     "author": "Andrew Dyer (https://github.com/andrewdyer)",
     "repository": {
         "type": "git",
-        "url": "https://github.com/andrewdyer/react-package-template.git"
+        "url": "https://github.com/andrewdyer/react-document-metadata.git"
     },
     "license": "MIT",
     "devDependencies": {
