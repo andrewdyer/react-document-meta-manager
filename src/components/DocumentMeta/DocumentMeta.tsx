@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDocumentTitle } from '../../hooks';
 
-export interface DocumentTitleProps {
+export interface DocumentMetaProps {
     children?: React.ReactNode;
     title: string;
     suffix?: string;
 }
 
-const DocumentTitle: React.FC<DocumentTitleProps> = ({ title, suffix, children }) => {
+const DocumentMeta: React.FC<DocumentMetaProps> = ({ title, suffix, children }) => {
     const { setSuffix, clearSuffix } = useDocumentTitle(title);
 
     React.useEffect(() => {
@@ -21,4 +21,4 @@ const DocumentTitle: React.FC<DocumentTitleProps> = ({ title, suffix, children }
     return <React.Fragment>{children}</React.Fragment>;
 };
 
-export default DocumentTitle;
+export default DocumentMeta;

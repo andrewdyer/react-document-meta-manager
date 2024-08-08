@@ -1,15 +1,15 @@
 import React from 'react';
 
-export interface DocumentTitleContextProps {
+export interface DocumentMetaContextProps {
     setDocumentTitle: (title: string) => void;
     setDocumentTitleSuffix: (text: string) => void;
     clearDocumentTitleSuffix: () => void;
 }
 
-const DocumentTitleContext = React.createContext<DocumentTitleContextProps>({
+const DocumentMetaContext = React.createContext<DocumentMetaContextProps>({
     setDocumentTitle: () => {},
     setDocumentTitleSuffix: () => {},
     clearDocumentTitleSuffix: () => {}
 });
 
-export default DocumentTitleContext;
+export default DocumentMetaContext;

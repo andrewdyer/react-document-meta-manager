@@ -1,11 +1,11 @@
 import React from 'react';
-import DocumentTitleContext from '../DocumentTitleContext';
+import DocumentMetaContext from '../DocumentMetaContext';
 
-export interface DocumentTitleProviderProps {
+export interface DocumentMetaProviderProps {
     children: React.ReactNode;
 }
 
-const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children }) => {
+const DocumentMetaProvider: React.FC<DocumentMetaProviderProps> = ({ children }) => {
     const [title, setDocumentTitle] = React.useState<string>('');
     const [documentTitleSuffix, setDocumentTitleSuffix] = React.useState<string>('');
 
@@ -18,11 +18,11 @@ const DocumentTitleProvider: React.FC<DocumentTitleProviderProps> = ({ children 
     };
 
     return (
-        <DocumentTitleContext.Provider
+        <DocumentMetaContext.Provider
             value={{ setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix }}>
             {children}
-        </DocumentTitleContext.Provider>
+        </DocumentMetaContext.Provider>
     );
 };
 
-export default DocumentTitleProvider;
+export default DocumentMetaProvider;

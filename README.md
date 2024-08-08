@@ -11,27 +11,27 @@ Licensed under MIT. Totally free for private or commercial projects.
 To install this package use npm:
 
 ```bash
-npm install @your-scope/react-package-template
+npm install react-document-meta-manager
 ```
 
 ## Usage
 
 ### Wrap Your React App
 
-Wrap your React app in the `DocumentTitleProvider`:
+Wrap your React app in the `DocumentMetaProvider`:
 
 ```tsx
 // index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { DocumentTitleProvider } from '@your-scope/react-package-template';
+import { DocumentMetaProvider } from 'react-document-meta-manager';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-    <DocumentTitleProvider>
+    <DocumentMetaProvider>
         <App />
-    </DocumentTitleProvider>,
+    </DocumentMetaProvider>,
     document.getElementById('root')
 );
 ```
@@ -43,7 +43,7 @@ Use the `useDocumentTitle` hook to set the document title:
 ```tsx
 // App.tsx
 import React from 'react';
-import { useDocumentTitle } from '@your-scope/react-package-template';
+import { useDocumentTitle } from 'react-document-meta-manager';
 
 export interface AppProps {}
 
@@ -63,12 +63,12 @@ Alternatively, use the `DocumentTitle` component:
 ```tsx
 // App.tsx
 import React from 'react';
-import { DocumentTitle } from '@your-scope/react-package-template';
+import { DocumentMeta } from 'react-document-meta-manager';
 
 export interface AppProps {}
 
 function App() {
-    return <DocumentTitle title="Home">Hello, world!</DocumentTitle>;
+    return <DocumentMeta title="Home">Hello, world!</DocumentMeta>;
 }
 
 export default App;
@@ -81,7 +81,7 @@ This example demonstrates how to update the document title based on the loading 
 ```tsx
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { useDocumentTitle } from '@your-scope/react-package-template';
+import { useDocumentTitle } from 'react-document-meta-manager';
 
 function App() {
     const [user, setUser] = useState<{ name: string } | null>(null);
@@ -110,7 +110,7 @@ This example demonstrates how to use the `setSuffix` and `clearSuffix` methods t
 ```tsx
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import { useDocumentTitle } from '@your-scope/react-package-template';
+import { useDocumentTitle } from 'react-document-meta-manager';
 
 function App() {
     const { setSuffix, clearSuffix } = useDocumentTitle('Messenger');
@@ -162,7 +162,7 @@ npm install yalc -g
 First, navigate to the project directory where you want to use this package and run:
 
 ```bash
-yalc add @your-scope/react-package-template
+yalc add react-document-meta-manager
 ```
 
 This will install the package from the local Yalc store. You can now use it in the project as you would with any other npm package.
@@ -172,7 +172,7 @@ This will install the package from the local Yalc store. You can now use it in t
 After publishing changes to this package to the local Yalc store, navigate to the project directory and run:
 
 ```bash
-yalc update @your-scope/react-package-template
+yalc update react-document-meta-manager
 ```
 
 This will update the installed version of this package in the project.

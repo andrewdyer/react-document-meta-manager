@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocumentTitleContext } from '../../contexts';
+import { DocumentMetaContext } from '../../contexts';
 
 interface UseDocumentTitle {
     setSuffix: (text: string) => void;
@@ -8,7 +8,7 @@ interface UseDocumentTitle {
 
 const useDocumentTitle = (title: string): UseDocumentTitle => {
     const { setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix } =
-        React.useContext(DocumentTitleContext);
+        React.useContext(DocumentMetaContext);
 
     React.useEffect(() => {
         setDocumentTitle(title);

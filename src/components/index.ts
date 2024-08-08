@@ -1,2 +1,2 @@
-export * from './DocumentTitle';
-export { default as DocumentTitle } from './DocumentTitle';
+export * from './DocumentMeta';
+export { default as DocumentMeta } from './DocumentMeta';

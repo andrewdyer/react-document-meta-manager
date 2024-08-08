@@ -1,7 +1,7 @@
-// DocumentTitleContext
-export * from './DocumentTitleContext';
-export { default as DocumentTitleContext } from './DocumentTitleContext';
+// DocumentMetaContext
+export * from './DocumentMetaContext';
+export { default as DocumentMetaContext } from './DocumentMetaContext';
 
-// DocumentTitleProvider
-export * from './DocumentTitleProvider';
-export { default as DocumentTitleProvider } from './DocumentTitleProvider';
+// DocumentMetaProvider
+export * from './DocumentMetaProvider';
+export { default as DocumentMetaProvider } from './DocumentMetaProvider';

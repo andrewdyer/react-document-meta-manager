@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import DocumentTitleContext from '../DocumentTitleContext';
-import DocumentTitleProvider from './DocumentTitleProvider';
+import DocumentMetaContext from '../DocumentMetaContext';
+import DocumentMetaProvider from './DocumentMetaProvider';
 
 interface TestComponentProps {
     title?: string;
@@ -11,7 +11,7 @@ interface TestComponentProps {
 
 const TestComponent: React.FC<TestComponentProps> = ({ title, text, clear }) => {
     const { setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix } =
-        React.useContext(DocumentTitleContext);
+        React.useContext(DocumentMetaContext);
 
     React.useEffect(() => {
         if (title) setDocumentTitle(title);
@@ -22,12 +22,12 @@ const TestComponent: React.FC<TestComponentProps> = ({ title, text, clear }) => 
     return null;
 };
 
-describe('DocumentTitleProvider', () => {
+describe('DocumentMetaProvider', () => {
     test('should update the document title based on context values', () => {
         render(
-            <DocumentTitleProvider>
+            <DocumentMetaProvider>
                 <TestComponent title="Base Title" />
-            </DocumentTitleProvider>
+            </DocumentMetaProvider>
         );
 
         expect(document.title).toBe('Base Title');
@@ -35,9 +35,9 @@ describe('DocumentTitleProvider', () => {
 
     test('should add text suffix to the document title', () => {
         render(
-            <DocumentTitleProvider>
+            <DocumentMetaProvider>
                 <TestComponent title="Base Title" text="Notification" />
-            </DocumentTitleProvider>
+            </DocumentMetaProvider>
         );
 
         expect(document.title).toBe('Base Title - Notification');
@@ -45,9 +45,9 @@ describe('DocumentTitleProvider', () => {
 
     test('should clear the text suffix from the document title', () => {
         render(
-            <DocumentTitleProvider>
+            <DocumentMetaProvider>
                 <TestComponent title="Base Title" text="Notification" clear />
-            </DocumentTitleProvider>
+            </DocumentMetaProvider>
         );
 
         expect(document.title).toBe('Base Title');
