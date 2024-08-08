@@ -4,19 +4,19 @@ import { useDocumentTitle } from '../../hooks';
 export interface DocumentMetaProps {
     children?: React.ReactNode;
     title: string;
-    suffix?: string;
+    titleSuffix?: string;
 }
 
-const DocumentMeta: React.FC<DocumentMetaProps> = ({ title, suffix, children }) => {
-    const { setSuffix, clearSuffix } = useDocumentTitle(title);
+const DocumentMeta: React.FC<DocumentMetaProps> = ({ title, titleSuffix, children }) => {
+    const { setDocumentTitleSuffix, clearDocumentTitleSuffix } = useDocumentTitle(title);
 
     React.useEffect(() => {
-        if (suffix) {
-            setSuffix(suffix);
+        if (titleSuffix) {
+            setDocumentTitleSuffix(titleSuffix);
         } else {
-            clearSuffix();
+            clearDocumentTitleSuffix();
         }
-    }, [suffix, setSuffix, clearSuffix]);
+    }, [titleSuffix, setDocumentTitleSuffix, clearDocumentTitleSuffix]);
 
     return <React.Fragment>{children}</React.Fragment>;
 };

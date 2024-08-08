@@ -5,19 +5,19 @@ import DocumentMetaProvider from './DocumentMetaProvider';
 
 interface TestComponentProps {
     title?: string;
-    text?: string;
+    titleSuffix?: string;
     clear?: boolean;
 }
 
-const TestComponent: React.FC<TestComponentProps> = ({ title, text, clear }) => {
+const TestComponent: React.FC<TestComponentProps> = ({ title, titleSuffix, clear }) => {
     const { setDocumentTitle, setDocumentTitleSuffix, clearDocumentTitleSuffix } =
         React.useContext(DocumentMetaContext);
 
     React.useEffect(() => {
         if (title) setDocumentTitle(title);
-        if (text) setDocumentTitleSuffix(text);
+        if (titleSuffix) setDocumentTitleSuffix(titleSuffix);
         if (clear) clearDocumentTitleSuffix();
-    }, [setDocumentTitle, setDocumentTitleSuffix, title, text]);
+    }, [setDocumentTitle, setDocumentTitleSuffix, title, titleSuffix]);
 
     return null;
 };
@@ -33,20 +33,20 @@ describe('DocumentMetaProvider', () => {
         expect(document.title).toBe('Base Title');
     });
 
-    test('should add text suffix to the document title', () => {
+    test('should add title suffix to the document title', () => {
         render(
             <DocumentMetaProvider>
-                <TestComponent title="Base Title" text="Notification" />
+                <TestComponent title="Base Title" titleSuffix="Notification" />
             </DocumentMetaProvider>
         );
 
         expect(document.title).toBe('Base Title - Notification');
     });
 
-    test('should clear the text suffix from the document title', () => {
+    test('should clear the title suffix from the document title', () => {
         render(
             <DocumentMetaProvider>
-                <TestComponent title="Base Title" text="Notification" clear />
+                <TestComponent title="Base Title" titleSuffix="Notification" clear />
             </DocumentMetaProvider>
         );
 

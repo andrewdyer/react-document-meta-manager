@@ -105,7 +105,7 @@ export default App;
 
 ### Suffix Example
 
-This example demonstrates how to use the `setSuffix` and `clearSuffix` methods to add and remove notification text from the document title dynamically:
+This example demonstrates how to use the `setDocumentTitleSuffix` and `clearDocumentTitleSuffix` methods to add and remove notification text from the document title dynamically:
 
 ```tsx
 // App.tsx
@@ -113,7 +113,7 @@ import React, { useEffect, useState } from 'react';
 import { useDocumentTitle } from 'react-document-meta-manager';
 
 function App() {
-    const { setSuffix, clearSuffix } = useDocumentTitle('Messenger');
+    const { setDocumentTitleSuffix, clearDocumentTitleSuffix } = useDocumentTitle('Messenger');
     const [newMessages, setNewMessages] = useState(0);
 
     useEffect(() => {

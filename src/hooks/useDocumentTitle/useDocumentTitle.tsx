@@ -2,8 +2,8 @@ import React from 'react';
 import { DocumentMetaContext } from '../../contexts';
 
 interface UseDocumentTitle {
-    setSuffix: (text: string) => void;
-    clearSuffix: () => void;
+    setDocumentTitleSuffix: (text: string) => void;
+    clearDocumentTitleSuffix: () => void;
 }
 
 const useDocumentTitle = (title: string): UseDocumentTitle => {
@@ -14,7 +14,7 @@ const useDocumentTitle = (title: string): UseDocumentTitle => {
         setDocumentTitle(title);
     }, [title]);
 
-    return { setSuffix: setDocumentTitleSuffix, clearSuffix: clearDocumentTitleSuffix };
+    return { setDocumentTitleSuffix, clearDocumentTitleSuffix };
 };
 
 export default useDocumentTitle;

@@ -14,10 +14,10 @@ describe('DocumentMeta', () => {
         expect(document.title).toBe('Base Title');
     });
 
-    test('should append text suffix to the document title', () => {
+    test('should append title suffix to the document title', () => {
         render(
             <DocumentMetaProvider>
-                <DocumentMeta title="Base Title" suffix="Notification" />
+                <DocumentMeta title="Base Title" titleSuffix="Notification" />
             </DocumentMetaProvider>
         );
 

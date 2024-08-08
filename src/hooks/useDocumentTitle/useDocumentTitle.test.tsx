@@ -14,27 +14,27 @@ describe('useDocumentTitle', () => {
         expect(document.title).toBe('Base Title');
     });
 
-    test('should append text suffix to the document title', () => {
+    test('should append title suffix to the document title', () => {
         const { result } = renderHook(() => useDocumentTitle('Base Title'), { wrapper });
 
         act(() => {
-            result.current.setSuffix('Notification');
+            result.current.setDocumentTitleSuffix('Notification');
         });
 
         expect(document.title).toBe('Base Title - Notification');
     });
 
-    test('should clear the text suffix from the document title', () => {
+    test('should clear the title suffix from the document title', () => {
         const { result } = renderHook(() => useDocumentTitle('Base Title'), { wrapper });
 
         act(() => {
-            result.current.setSuffix('Notification');
+            result.current.setDocumentTitleSuffix('Notification');
         });
 
         expect(document.title).toBe('Base Title - Notification');
 
         act(() => {
-            result.current.clearSuffix();
+            result.current.clearDocumentTitleSuffix();
         });
 
         expect(document.title).toBe('Base Title');
