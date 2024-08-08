@@ -127,11 +127,11 @@ function App() {
 
     useEffect(() => {
         if (newMessages > 0) {
-            setNotificationText(`${newMessages} new message${newMessages > 1 ? 's' : ''}`);
+            setDocumentTitleSuffix(`${newMessages} new message${newMessages > 1 ? 's' : ''}`);
         } else {
             clearNotificationText();
         }
-    }, [newMessages, setNotificationText, clearNotificationText]);
+    }, [newMessages, setDocumentTitleSuffix, clearNotificationText]);
 
     return (
         <div>
