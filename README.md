@@ -76,7 +76,7 @@ function App() {
 export default App;
 ```
 
-## Advanced Example
+## Advanced Examples
 
 ### Dynamic Document Titles
 
