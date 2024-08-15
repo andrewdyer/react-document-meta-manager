@@ -1,7 +1,7 @@
 {
     "name": "react-document-metadata",
     "description": "A flexible and dynamic package designed to help you manage document metadata in your React application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "types": "dist/types/index.d.ts",
